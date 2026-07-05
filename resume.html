@@ -291,6 +291,11 @@
       font-style: italic;
       line-height: 1.4;
       color: var(--text);
+      letter-spacing: 0.02em;
+      display: inline-block;
+      padding: 10px 18px;
+      border-left: 3px solid rgba(26, 58, 92, 0.25);
+      border-right: 3px solid rgba(26, 58, 92, 0.25);
     }
 
     .education-grid,
@@ -305,7 +310,8 @@
     }
 
     .project-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
 
     .education-card,
@@ -329,6 +335,18 @@
       font-family: "Georgia", serif;
       font-size: 1.3rem;
       color: var(--text);
+      line-height: 1.35;
+    }
+
+    .education-title span {
+      display: block;
+    }
+
+    .education-title .education-subline {
+      margin-top: 4px;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
     }
 
     .education-meta,
@@ -337,12 +355,13 @@
       font-size: 0.95rem;
       color: var(--muted);
       line-height: 1.65;
+      font-weight: 400;
     }
 
     .education-gpa {
       margin: 0 0 14px;
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .education-copy,
@@ -400,6 +419,29 @@
       margin-bottom: 10px;
     }
 
+    .project-card {
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(26, 58, 92, 0.12);
+    }
+
+    .project-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      text-align: left;
+      color: inherit;
+    }
+
     .project-meta {
       display: block;
       margin-bottom: 12px;
@@ -413,6 +455,36 @@
       margin: 0 0 12px;
       font-size: 1.25rem;
       color: var(--text);
+    }
+
+    .project-toggle-icon {
+      font-size: 1.1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .project-detail {
+      display: block;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(26, 58, 92, 0.12);
+    }
+
+    .project-detail ul {
+      margin: 0 0 16px;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .project-attachment {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(232, 244, 253, 0.95);
+      color: var(--accent);
+      font-size: 0.95rem;
     }
 
     .interest-grid {
@@ -440,8 +512,8 @@
 
     .timeline-time {
       display: inline-block;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 1.02rem;
+      font-weight: 700;
       color: var(--accent);
       line-height: 1.7;
     }
@@ -666,6 +738,10 @@
         align-items: flex-start;
       }
 
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
       .nav {
         gap: 14px;
       }
@@ -712,15 +788,15 @@
 <body>
   <div class="page">
     <header class="topbar">
-      <div class="brand">Jiateng (Kaelyn) Sun</div>
+      <div class="brand">孙嘉腾（Kaelyn）</div>
       <div class="topbar-right">
         <nav class="nav" aria-label="Primary navigation">
-          <a href="#about" data-i18n="nav.about">关于</a>
+          <a href="#about" data-i18n="nav.about">关于我</a>
           <a href="#education" data-i18n="nav.education">教育经历</a>
           <a href="#skills" data-i18n="nav.skills">技能</a>
           <a href="#experience" data-i18n="nav.experience">实习经历</a>
-          <a href="#projects" data-i18n="nav.projects">项目</a>
-          <a href="#contact" data-i18n="nav.contact">联系</a>
+          <a href="#projects" data-i18n="nav.projects">项目经历</a>
+          <a href="#contact" data-i18n="nav.contact">联系方式</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language switcher">
           <button class="lang-btn" type="button" data-lang="zh" aria-pressed="true">中文</button>
@@ -732,8 +808,7 @@
     <section class="hero fade-section" id="about">
       <div class="hero-inner">
         <div class="hero-headline">
-          <p class="eyebrow" data-i18n="hero.eyebrow">Portfolio</p>
-          <h1 class="hero-heading">Jiateng (Kaelyn) Sun</h1>
+          <h1 class="hero-heading">孙嘉腾（Kaelyn）</h1>
           <div class="divider"></div>
         </div>
 
@@ -742,7 +817,7 @@
             <img class="headshot" src="images/Jiateng SUN.JPG" alt="Jiateng (Kaelyn) Sun headshot" />
           </div>
           <div class="hero-copy">
-            <p class="bio-text" data-i18n="hero.bio">我是一名正在西北大学攻读 IMC 的研究生，专注于把数据分析、市场策略与品牌叙事结合起来。我热衷于用结构化思维解决复杂问题，尤其在客户洞察、营销传播、CRM 与跨渠道增长项目中积累了较多实践经验。我的作品集既包含项目成果，也希望呈现我的成长过程与个人表达方式。</p>
+            <p class="bio-text" data-i18n="hero.bio">我是一名正在美国西北大学攻读整合营销传播 IMC 硕士的学生，专注于把数据分析、市场策略与品牌叙事结合起来。我的兴趣在于用结构化思维解决复杂问题，尤其在客户洞察、传播策略、CRM 和跨渠道增长项目中积累了较多实践经验。我希望用这个作品集展现我的方法、成长过程以及我想做的事情。</p>
           </div>
         </div>
       </div>
@@ -760,16 +835,22 @@
         <h2 data-i18n="education.title">教育背景</h2>
         <div class="education-grid">
           <article class="education-card">
-            <h3 class="education-title">Northwestern University</h3>
-            <p class="education-meta">M.S. Integrated Marketing Communications (IMC) · Chicago, IL</p>
-            <p class="education-gpa">Sep 2025 – Dec 2026 (Expected) · GPA: 3.96 / 4.0</p>
-            <p class="education-copy" data-i18n="education.northwestern">核心课程包括消费者洞察、数据管理与可视化、营销研究与 IMC 策略，重点培养我将数据分析与品牌传播结合的能力。</p>
+            <h3 class="education-title">
+              <span>美国西北大学 Northwestern University</span>
+              <span class="education-subline">整合营销 IMC｜硕士</span>
+            </h3>
+            <p class="education-meta">2025.9 - 2026.12 · 芝加哥</p>
+            <p class="education-gpa">GPA: 3.95/4.0，相关课程：Consumer Insights、Marketing Research、IMC Strategy、Machine Learning。</p>
+            <p class="education-copy" data-i18n="education.northwestern">GPA: 3.95/4.0，相关课程：Consumer Insights、Marketing Research、IMC Strategy、Machine Learning。</p>
           </article>
           <article class="education-card">
-            <h3 class="education-title">Shanghai International Studies University</h3>
-            <p class="education-meta">B.A. Diplomacy & French (Dual Degree) · Shanghai</p>
-            <p class="education-gpa">Sep 2021 – Jun 2025 · GPA: 3.93 / 4.0 · Ranked #1 in major</p>
-            <p class="education-copy" data-i18n="education.sisu">曾获校级优秀学生、年度教育奖学金与荣誉学院奖学金；并在韩国高丽大学暑期项目中取得全A表现，提升了跨文化沟通与国际视野。</p>
+            <h3 class="education-title">
+              <span>上海外国语大学</span>
+              <span class="education-subline">外交学 & 法语（双学位）｜本科</span>
+            </h3>
+            <p class="education-meta">2021.9 - 2025.6 · 上海</p>
+            <p class="education-gpa">GPA: 3.93/4.0（专业第一），获校优秀学生、年度教育奖励基金、卓越学院荣誉奖学金。</p>
+            <p class="education-copy" data-i18n="education.sisu">相关课程：统计学、Python数据分析与可视化、全球传播、西方经济学、高级法语。修读韩国高丽大学夏校（QS排名74），获得全A成绩。</p>
           </article>
         </div>
       </div>
@@ -793,21 +874,25 @@
               <span class="skill-tag">Python</span>
               <span class="skill-tag">R</span>
               <span class="skill-tag">SQL</span>
-              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">VS code</span>
+              <span class="skill-tag">Tableau</span>
               <span class="skill-tag">SPSS</span>
+              <span class="skill-tag">Excel</span>
               <span class="skill-tag">Photoshop</span>
-              <span class="skill-tag">Premiere Pro</span>
+              <span class="skill-tag">Brandwatch</span>
+              <span class="skill-tag">Gephi</span>
             </div>
           </div>
           <div class="skill-group">
             <h3 data-i18n="skills.marketing">营销与增长</h3>
             <div class="skill-tags">
-              <span class="skill-tag">KOL/KOC 运作</span>
-              <span class="skill-tag">CRM 与客户触达策略</span>
-              <span class="skill-tag">内容策略</span>
-              <span class="skill-tag">性能营销与转化优化</span>
-              <span class="skill-tag">数据可视化</span>
               <span class="skill-tag">消费者洞察</span>
+              <span class="skill-tag">KOL/KOC 运营</span>
+              <span class="skill-tag">CRM</span>
+              <span class="skill-tag">用户增长</span>
+              <span class="skill-tag">内容策略</span>
+              <span class="skill-tag">绩效营销</span>
+              <span class="skill-tag">广告投放与优化</span>
             </div>
           </div>
         </div>
@@ -819,38 +904,56 @@
         <h2 data-i18n="experience.title">实习经历</h2>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-time">2026.6 – 2026.8<br />芝加哥</div>
+            <div class="timeline-time">2026.6 - 2026.8<br />芝加哥</div>
             <div class="timeline-card">
-              <h3 class="timeline-role">QIAGEN｜Regional Marketing ComOps 实习生</h3>
-              <p class="timeline-company">岗位：市场营销分析实习生 · 负责区域市场营销运营与数据支持</p>
+              <h3 class="timeline-role">QIAGEN｜区域市场营销分析 (Regional Marketing ComOps) 实习生</h3>
               <ul class="timeline-list">
-                <li>基于 RFM 模型对北美长尾客户群进行分层细分，识别高潜力增长与流失风险账户，构建客户分群画像及决策旅程地图。</li>
-                <li>设计基于触发逻辑的自动化客户互动策略，输出渠道架构与 CRM 集成方案，推动在不扩张销售团队规模前提下实现规模化客户覆盖。</li>
-                <li>搭建差异化市场进入概念方案与可落地商业论证，涵盖收入与毛利增量测算、关键指标体系与追踪仪表盘，为管理层投资决策提供数据支撑。</li>
+                <li><strong>RFM模型</strong>：对北美长尾客户群进行分层细分，识别高潜力增长与流失风险账户，构建客户分群画像及决策旅程地图。</li>
+                <li><strong>自动化客户互动策略</strong>：设计基于触发逻辑的自动化客户互动策略，输出渠道架构与CRM集成方案，实现在不扩张销售团队规模前提下的规模化客户覆盖。</li>
+                <li><strong>市场进入与商业论证</strong>：搭建差异化市场进入概念方案与可落地商业论证，涵盖收入及毛利增量测算、关键指标体系与追踪仪表盘，为管理层投资决策提供数据支撑。</li>
               </ul>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-time">2025.2 – 2025.5<br />上海</div>
+            <div class="timeline-time">2025.2 - 2025.5<br />上海</div>
             <div class="timeline-card">
-              <h3 class="timeline-role">小红书｜C-End Communications 实习生</h3>
-              <p class="timeline-company">岗位：内容与传播运营实习生</p>
+              <h3 class="timeline-role">小红书｜交易市场组C端传播实习生</h3>
               <ul class="timeline-list">
-                <li>搭建分层 KOL/KOC 生态，覆盖 10+ 社群与 1,300+ 成员，带动 2000+ 内容产出与百万级曝光。</li>
-                <li>结合 CTR/CES 优化广告和内容投放策略，重点内容 CTR 超过 8%。</li>
-                <li>统筹流量资源与活动策划，协助“春日展”全国性销售活动实现 GMV +78%、订单 +129%。</li>
+                <li><strong>内容增长</strong>：参与平台级电商项目（春日服装趋势、花朵配饰）传播策略制定，负责传播执行及数据复盘优化。</li>
+                <li><strong>KOL与社群运营</strong>：搭建分层KOL/KOC运营体系（高点买手/重点买手/社群作者），运营10+个社群（1,300人），累计促产2,000+篇笔记，达成20位明星/核心买手合作，重点笔记23篇，累计实现百万级曝光。</li>
+                <li><strong>投流与数据优化</strong>：基于CTR/CES等指标优化初始投流与加投策略，优质内容CTR达8%+；参与亿级流量资源统筹（开屏/信息流/搜索等），优化“内容种草–兴趣转化–电商成交”链路，提升服配类目内容渗透率。</li>
+                <li><strong>活动策划与落地</strong>：策划“春日秀场”全国员工内卖会（线上+线下）。搭建线上H5会场，招商139家商家、筛选300款商品，GMV+78%，订单量+129%；线下负责场地统筹、物料投放规划与现场执行。</li>
               </ul>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="timeline-time">2024.7 – 2024.12<br />上海</div>
+            <div class="timeline-time">2024.7 - 2024.12<br />上海</div>
             <div class="timeline-card">
-              <h3 class="timeline-role">雀巢｜Digital Center 实习生</h3>
-              <p class="timeline-company">岗位：数字营销与用户增长实习生</p>
+              <h3 class="timeline-role">雀巢｜数字化中心 暑期实习生</h3>
               <ul class="timeline-list">
-                <li>负责微信小程序与社群运营，带动新用户注册增长 16%、MAU 上升 8%。</li>
-                <li>协同执行 5 场节日营销活动，累计带来 90,000+ 浏览量和用户参与提升 52%。</li>
-                <li>通过问卷与用户标签体系建设，为精准营销提供客户分层与洞察支持。</li>
+                <li><strong>CRM与用户运营</strong>：负责雀巢官方会员小程序及微信社群的数字化运营，通过数据日报/周报监测及客服侧用户需求，提出新增产品组合、小程序功能开发等优化方案，实现新用户注册量环比增长16%，月活用户提升8%。</li>
+                <li><strong>活动策划与推广</strong>：策划并落地5场节日主题线上营销活动（国庆节/重阳节/双十一等），统筹社媒矩阵（微信+小红书+微博）全域推广；通过埋点追踪用户行为路径，优化活动转化链路，累计获得9万+人次访问，新客参与率提升52%。</li>
+                <li><strong>库存管理</strong>：基于订单数据搭建临期商品预警与促销兑换机制，推动客诉率下降21%，库存周转效率提升15%。</li>
+                <li><strong>市场调查</strong>：调研竞品社交媒体并形成参考库，设计并回收有效问卷9293份，构建用户画像标签体系，驱动精准营销。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">2023.11 - 2024.3<br />上海</div>
+            <div class="timeline-card">
+              <h3 class="timeline-role">新加坡JNL家族办公室｜自媒体运营实习生</h3>
+              <ul class="timeline-list">
+                <li><strong>海外账号运营</strong>：剪辑金融双语视频，独立运营YouTube账号，累计上传20个视频，点击量上万，账号粉丝增加316%。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">2023.7 - 2023.9<br />上海</div>
+            <div class="timeline-card">
+              <h3 class="timeline-role">蓝色光标｜出海市场营销实习生</h3>
+              <ul class="timeline-list">
+                <li><strong>账号运营</strong>：负责得物、腾讯等客户的海外广告投放（Facebook/Google/快手）及账号运营，分析广告花费速度、转化成本及素材表现，输出预算分配优化与尾部素材替换方案并落地执行，CTR提升11%，新增粉丝7,764；</li>
+                <li><strong>市场调查</strong>：使用data ai、SocialPeta及SimilarWeb网站，搜集市场用户画像、下载量数据和趋势，定位竞争对手并研究其广告模式和策略，以协同完成供应商考察PPT，最终帮助公司成功竞标为得物的第一广告代理。</li>
               </ul>
             </div>
           </div>
@@ -860,45 +963,110 @@
 
     <section class="section section--blue fade-section" id="projects">
       <div class="section-inner">
-        <h2 data-i18n="projects.title">代表项目</h2>
-        <div class="project-grid">
-          <article class="project-card">
-            <span class="project-meta">第 6 届美团商业分析精英大赛｜队长</span>
-            <h3 class="project-title">异地场景下“酒店+X”跨业态神券投放模型构建</h3>
-            <p class="project-text">以美团官方数据为基础，主导数据分析与模型构建：人工归因标注行为序列，搭建四层信号规则评分模型识别商旅、情侣、亲子、特种兵等人群，并通过 K-Means 聚类交叉验证；同时基于全链路行为序列识别黄金消费窗口，并输出六条规则驱动的神券包推荐模型。</p>
-          </article>
-          <article class="project-card">
-            <span class="project-meta">Northwestern Cause Marketing Initiative｜项目成员</span>
-            <h3 class="project-title">Sarah’s Circle 整合营销咨询</h3>
-            <p class="project-text">为芝加哥非营利组织 Sarah’s Circle 提供受众分析、媒体渠道审计与网站优化支持；主导 Facebook 付费广告板块，设计投放结构与 A/B 测试方案，并基于 GA4 结果提出捐款转化路径优化建议。</p>
-          </article>
-          <article class="project-card">
-            <span class="project-meta">校园与学术项目</span>
-            <h3 class="project-title">Python 情绪分析与政策研究</h3>
-            <p class="project-text">曾参与基于网络评论的情绪分析项目，并完成政策研究竞赛，输出结构化结论与战略建议，体现我在数据分析与商业叙事两方面的能力。</p>
-          </article>
-        </div>
-
-        <div class="gallery-grid">
-          <figure class="gallery-card">
-            <img src="images/v1-1.png" alt="Portfolio visual showcase one" />
-            <figcaption class="visual-caption">项目思路与洞察框架的视觉化表达。</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="images/v1-2.png" alt="Portfolio visual showcase two" />
-            <figcaption class="visual-caption">将复杂分析结果转化为更容易被理解的传播材料。</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="images/Jiateng SUN.JPG" alt="Personal photo" />
-            <figcaption class="visual-caption">个人照片与作品集风格统一，强化真实表达。</figcaption>
-          </figure>
+        <h2 data-i18n="projects.title">项目经历</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-time">2026.3 - 2026.5</div>
+            <div class="project-card timeline-card">
+              <button class="project-toggle" type="button" aria-expanded="false">
+                <div>
+                  <span class="project-meta">异地场景下“酒店+X”跨业态神券投放模型构建｜队长</span>
+                  <h3 class="project-title">第6届美团商业分析精英大赛</h3>
+                </div>
+                <span class="project-toggle-icon">＋</span>
+              </button>
+              <div class="project-detail">
+                <ul>
+                  <li>以美团官方数据为基础，主导数据分析与模型构建：人工归因标注行为序列，构建四层信号规则评分模型识别商旅、情侣、亲子、特种兵四类人群，并以K-Means聚类交叉验证；通过全链路行为序列分析识别各业态黄金消费窗口；</li>
+                  <li>基于六条规则构建神券包推荐模型（涵盖人群标签、BU优先级、券型与面额等维度），输出差异化神券包策略。</li>
+                </ul>
+                <a class="project-attachment" href="#" onclick="return false;">点击添加项目 PDF / 图片</a>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">2026.2 - 2026.5</div>
+            <div class="project-card timeline-card">
+              <button class="project-toggle" type="button" aria-expanded="false">
+                <div>
+                  <span class="project-meta">Sarah’s Circle 整合营销咨询｜项目成员</span>
+                  <h3 class="project-title">西北大学CAUSE MARKETING INITIATIVE</h3>
+                </div>
+                <span class="project-toggle-icon">＋</span>
+              </button>
+              <div class="project-detail">
+                <ul>
+                  <li>为芝加哥非营利组织Sarah’s Circle提供整合营销咨询，涵盖受众分析、媒体渠道审计与策略、网站优化；</li>
+                  <li>主导Facebook付费广告板块：通过Meta Business Suite数据分析，审计付费社交效率漏洞，设计投放配置指南，涵盖广告活动结构、地理位置A/B测试方案、素材选择逻辑、GA4 Conversion Tracking及阶段性预算scaling决策框架；</li>
+                  <li>参与网站优化，基于GA4分析各渠道停留时长、点击路径与转化表现，提出捐款转化路径及页面UX改进建议。</li>
+                </ul>
+                <a class="project-attachment" href="#" onclick="return false;">点击添加项目 PDF / 图片</a>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">2023.12 - 2024.4</div>
+            <div class="project-card timeline-card">
+              <button class="project-toggle" type="button" aria-expanded="false">
+                <div>
+                  <span class="project-meta">TOP 50｜队长</span>
+                  <h3 class="project-title">2024 欧莱雅BRANDSTORM商赛</h3>
+                </div>
+                <span class="project-toggle-icon">＋</span>
+              </button>
+              <div class="project-detail">
+                <ul>
+                  <li>领导团队全面分析美护发行业市场规模、商业模式、目标人群，充分挖掘市场需求和关键痛点；</li>
+                  <li>主导选定养发梳赛道进行深度功能探索与竞品分析，设计“养头皮+健发”一体的科技赋能创新产品及推广方案。</li>
+                </ul>
+                <a class="project-attachment" href="#" onclick="return false;">点击添加项目 PDF / 图片</a>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">2023.4 - 2023.6</div>
+            <div class="project-card timeline-card">
+              <button class="project-toggle" type="button" aria-expanded="false">
+                <div>
+                  <span class="project-meta">全国大学生大数据与公共决策大赛排名前20%｜队长</span>
+                  <h3 class="project-title">“中国政府对于对外开放的关注度”研究</h3>
+                </div>
+                <span class="project-toggle-icon">＋</span>
+              </button>
+              <div class="project-detail">
+                <ul>
+                  <li>带领组员研读相关政策文件、智库报告、权威期刊等，并使用Python爬取《政府工作报告》并制成数据库；</li>
+                  <li>独立运用Python实现词频统计、关键词筛选、TF-IDF算法和语义网络分析等，并共同完成21页可视化分析报告。</li>
+                </ul>
+                <a class="project-attachment" href="#" onclick="return false;">点击添加项目 PDF / 图片</a>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">2021.12 - 2022.6</div>
+            <div class="project-card timeline-card">
+              <button class="project-toggle" type="button" aria-expanded="false">
+                <div>
+                  <span class="project-meta">大学生计算机应用能力大赛省赛三等奖 & 国赛入围｜独立项目</span>
+                  <h3 class="project-title">网络新闻评论情感分析</h3>
+                </div>
+                <span class="project-toggle-icon">＋</span>
+              </button>
+              <div class="project-detail">
+                <ul>
+                  <li>通过Python爬取新闻评论并处理文本，利用自主研发的函数量化评论情感浓度；运用Python和R实现数据可视化。</li>
+                </ul>
+                <a class="project-attachment" href="#" onclick="return false;">点击添加项目 PDF / 图片</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section section--cream fade-section" id="interests">
       <div class="section-inner">
-        <h2 data-i18n="interests.title">兴趣与个人表达</h2>
+        <h2 data-i18n="interests.title">个人兴趣</h2>
         <div class="interest-grid">
           <article class="featured-interest">
             <div class="interest-header">
@@ -934,7 +1102,7 @@
 
     <section class="section section--blue fade-section" id="contact">
       <div class="section-inner">
-        <h2 data-i18n="contact.title">联系我</h2>
+        <h2 data-i18n="contact.title">联系方式</h2>
         <div class="contact-panel">
           <div class="contact-grid">
             <div class="contact-item">
@@ -942,8 +1110,8 @@
               <span class="contact-value"><a href="mailto:kaelyn_sun@outlook.com">kaelyn_sun@outlook.com</a></span>
             </div>
             <div class="contact-item">
-              <span class="contact-label" data-i18n="contact.location">所在地</span>
-              <span class="contact-value">Chicago / Shanghai</span>
+              <span class="contact-label">微信 / 手机</span>
+              <span class="contact-value">15000248688<br />9-12月在海外，请优先邮箱/微信联系</span>
             </div>
             <div class="contact-item">
               <span class="contact-label">LinkedIn</span>
@@ -955,19 +1123,19 @@
     </section>
 
     <footer class="footer fade-section">
-      <p data-i18n="footer.text">由 Jiateng (Kaelyn) Sun 设计与撰写。这个作品集希望展现我的策略思维、叙事表达与可衡量的影响力。</p>
+      <p data-i18n="footer.text">由孙嘉腾（Kaelyn）设计编辑。Thanks for your time.</p>
     </footer>
   </div>
 
   <script>
     const translations = {
       zh: {
-        "nav.about": "关于",
+        "nav.about": "关于我",
         "nav.education": "教育经历",
         "nav.skills": "技能",
         "nav.experience": "实习经历",
-        "nav.projects": "项目",
-        "nav.contact": "联系",
+        "nav.projects": "项目经历",
+        "nav.contact": "联系方式",
         "hero.eyebrow": "作品集",
         "hero.bio": "我是一名正在西北大学攻读 IMC 的研究生，专注于把数据分析、市场策略与品牌叙事结合起来。我热衷于用结构化思维解决复杂问题，尤其在客户洞察、营销传播、CRM 与跨渠道增长项目中积累了较多实践经验。我的作品集既包含项目成果，也希望呈现我的成长过程与个人表达方式。",
         "quote.text": "用数据理解人，用叙事驱动行动。",
@@ -979,15 +1147,15 @@
         "skills.tools": "分析与设计工具",
         "skills.marketing": "营销与增长",
         "experience.title": "实习经历",
-        "projects.title": "代表项目",
-        "interests.title": "兴趣与个人表达",
-        "contact.title": "联系我",
+        "projects.title": "项目经历",
+        "interests.title": "个人兴趣",
+        "contact.title": "联系方式",
         "contact.email": "邮箱",
         "contact.location": "所在地",
-        "footer.text": "由 Jiateng (Kaelyn) Sun 设计与撰写。这个作品集希望展现我的策略思维、叙事表达与可衡量的影响力。"
+        "footer.text": "由孙嘉腾（Kaelyn）设计编辑。Thanks for your time."
       },
       en: {
-        "nav.about": "About",
+        "nav.about": "About Me",
         "nav.education": "Education",
         "nav.skills": "Skills",
         "nav.experience": "Experience",
@@ -1005,11 +1173,11 @@
         "skills.marketing": "Marketing & Growth",
         "experience.title": "Experience",
         "projects.title": "Selected Projects",
-        "interests.title": "Interests & Personal Expression",
+        "interests.title": "Personal Interests",
         "contact.title": "Contact",
         "contact.email": "Email",
         "contact.location": "Location",
-        "footer.text": "Designed and written by Jiateng (Kaelyn) Sun. This portfolio highlights my strategic thinking, storytelling, and measurable impact."
+        "footer.text": "Designed and edited by Jiateng (Kaelyn) Sun. Thanks for your time."
       }
     };
 
@@ -1044,6 +1212,18 @@
 
       document.querySelectorAll('.lang-btn').forEach((button) => {
         button.addEventListener('click', () => applyLanguage(button.getAttribute('data-lang')));
+      });
+
+      document.querySelectorAll('.project-toggle').forEach((button) => {
+        button.addEventListener('click', () => {
+          const card = button.closest('.project-card');
+          const detail = card.querySelector('.project-detail');
+          const icon = button.querySelector('.project-toggle-icon');
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!expanded));
+          detail.classList.toggle('open', !expanded);
+          icon.textContent = expanded ? '＋' : '−';
+        });
       });
 
       applyLanguage('zh');
