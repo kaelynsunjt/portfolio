@@ -68,7 +68,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
+      gap: 16px;
       padding: 18px 0;
       border-radius: 0;
       margin: 0;
@@ -94,17 +94,18 @@
     }
 
     .brand {
-      font-size: 0.95rem;
-      letter-spacing: 0.18em;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
+      flex-shrink: 0;
     }
 
     .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
-      font-size: 0.95rem;
+      gap: 14px;
+      font-size: 0.85rem;
       color: var(--muted);
     }
 
@@ -132,7 +133,8 @@
       border: 0;
       background: transparent;
       color: var(--muted);
-      padding: 7px 12px;
+      padding: 6px 10px;
+      font-size: 0.85rem;
       border-radius: 999px;
       cursor: pointer;
       transition: all 180ms ease;
@@ -690,6 +692,32 @@
       }
     }
 
+    @media (max-width: 639px) {
+      .bridge-photos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-count: initial;
+        gap: 10px;
+        align-items: start;
+      }
+
+      .bridge-photos img {
+        margin-bottom: 0;
+      }
+
+      .bridge-photos img:nth-child(2) {
+        order: 4;
+      }
+
+      .bridge-photos img:nth-child(3) {
+        order: 1;
+      }
+
+      .bridge-photos img:nth-child(4) {
+        order: 2;
+      }
+    }
+
     .interest-header {
       display: flex;
       align-items: flex-start;
@@ -832,14 +860,22 @@
         padding: 20px 18px 32px;
       }
 
+      .brand {
+        display: none;
+      }
+
       .topbar-right {
         width: 100%;
-        justify-content: space-between;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px 10px;
       }
 
       .topbar {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
       }
 
       .contact-grid {
@@ -847,7 +883,19 @@
       }
 
       .nav {
-        gap: 14px;
+        display: contents;
+        font-size: 0.76rem;
+      }
+
+      .lang-switch {
+        margin-left: auto;
+        padding: 3px;
+        gap: 3px;
+      }
+
+      .lang-btn {
+        padding: 4px 8px;
+        font-size: 0.66rem;
       }
 
       .hero {
@@ -881,6 +929,98 @@
       .project-grid > article:nth-child(4),
       .project-grid > article:nth-child(5) {
         grid-column: auto;
+      }
+
+      .hero,
+      .section,
+      .quote-banner,
+      .footer,
+      .carousel-stage {
+        width: calc(100% + 36px);
+        margin-left: -18px;
+        margin-right: -18px;
+      }
+
+      .clothesline-wrap {
+        margin-left: -18px;
+        margin-right: -18px;
+      }
+
+      .cl-photos {
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        gap: 14px;
+        padding-bottom: 6px;
+      }
+
+      .cl-item {
+        flex-shrink: 0;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+      }
+
+      .education-title,
+      .experience-title,
+      .interest-heading,
+      .interest-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .timeline-role {
+        font-size: 1.02rem;
+      }
+
+      .education-copy,
+      .experience-copy,
+      .project-text,
+      .interest-copy,
+      .timeline-list,
+      .interest-list {
+        font-size: 0.92rem;
+      }
+
+      .project-title {
+        font-size: 1.1rem;
+      }
+
+      .bio-text {
+        font-size: 0.92rem;
+      }
+
+      .quote-text {
+        font-size: 1.15rem;
+      }
+
+      .quote-mark {
+        font-size: 2.2rem;
+      }
+
+      .skill-tag,
+      .focus-tag {
+        font-size: 0.85rem;
+        padding: 7px 12px;
+      }
+
+      .education-meta,
+      .experience-meta,
+      .timeline-time {
+        font-size: 0.88rem;
+      }
+
+      .carousel-stage {
+        height: 300px;
+      }
+
+      .c-card {
+        width: min(46vw, 210px);
+      }
+
+      .footer {
+        font-size: 0.72rem;
       }
     }
 
@@ -1067,6 +1207,7 @@
           <a href="#experience" data-i18n="nav.experience">实习经历</a>
           <a href="#projects" data-i18n="nav.projects">项目经历</a>
           <a href="#campus" data-i18n="nav.campus">学生工作</a>
+          <a href="#interests" data-i18n="nav.interests">个人兴趣</a>
           <a href="#contact" data-i18n="nav.contact">联系方式</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language switcher">
@@ -1602,6 +1743,7 @@
         "nav.experience": "实习经历",
         "nav.projects": "项目经历",
         "nav.campus": "学生工作",
+        "nav.interests": "个人兴趣",
         "nav.contact": "联系方式",
         "hero.eyebrow": "作品集",
         "hero.bio": "我是一名正在美国西北大学攻读整合营销（IMC）的研究生，专注于连接数据与创意，将洞察转化为增长策略。过去的经历横跨快消、互联网、广告与生命科学，覆盖客户洞察、CRM、营销分析与跨渠道增长。\n生活中，我是一名桥牌选手，曾获北美大学生双人赛冠军和亚太混双冠军；牌桌上的逻辑判断与团队协作，也成为我思考与解决问题的一部分。\n我拥抱 AI 带来的变化，持续探索如何与 AI 协作，将想法变成更具互动性和个人风格的数字作品。",
@@ -1630,6 +1772,7 @@
         "nav.experience": "Internship",
         "nav.projects": "Projects",
         "nav.campus": "Campus Activities",
+        "nav.interests": "Interests",
         "nav.contact": "Contact",
         "hero.eyebrow": "Portfolio",
         "hero.bio": "I'm a graduate student pursuing Integrated Marketing Communications (IMC) at Northwestern University, focused on connecting data and creativity to turn insight into growth strategy. My experience spans FMCG, internet, advertising, and life sciences — covering customer insight, CRM, marketing analytics, and cross-channel growth.\nOutside of work, I'm a competitive bridge player — Champion at the North American Collegiate Pairs and the Asia-Pacific Mixed Pairs. The logical judgment and teamwork bridge demands have become part of how I think and solve problems.\nI embrace the change AI brings, constantly exploring how to collaborate with it to turn ideas into digital work that's more interactive and personal.",
